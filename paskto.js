@@ -172,11 +172,11 @@ function Main(){
     });
   }
 
-  if (!fs.existsSync('./paskto_db.json')) {
+  if (!fs.existsSync('/tmp/paskto_db.json')) {
       console.log("Paskto database does not exist, please run paskto --update-db");
       return false;
   } else {
-    db = require('./paskto_db.json');
+    db = require('/tmp/paskto_db.json');
     test_names = Object.keys(db);
     DBToHash();
   }
@@ -556,7 +556,7 @@ function BuildPaskoDB(){
 
       }
     }
-    fs.writeFile(__dirname + "/paskto_db.json", JSON.stringify(nikto_db_tests,null,2), function (err) {
+    fs.writeFile("/tmp/paskto_db.json", JSON.stringify(nikto_db_tests,null,2), function (err) {
         if (err)
             return console.log(err);
         console.log('INFO: Paskto database successfully updated.');
